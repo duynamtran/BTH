@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Channels;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DPM225446_TranDuyNam_MyWorld07_Bridge
+{
+    public abstract class Notifier
+    {
+        public IChannel Channel { get; set; }
+        public abstract void Notify(string message);
+    }
+
+    public class ReservationNotifier : Notifier
+    {
+        public override void Notify(string message)
+        {
+            Channel?.Send(message);
+        }
+    }
+}
